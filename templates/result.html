@@ -51,10 +51,21 @@
         <h1 class="text-center mb-4">Programação Gerada</h1>
         <div class="card">
             <div class="card-body">
-                <pre>{{ resultado | safe }}</pre>
+                <pre id="resultado"></pre>
             </div>
         </div>
         <a href="/" class="btn btn-primary mt-3">Voltar</a>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resultado = localStorage.getItem('resultado');
+            if (resultado) {
+                document.getElementById('resultado').textContent = resultado;
+                localStorage.removeItem('resultado'); // Limpar após exibir
+            } else {
+                document.getElementById('resultado').textContent = 'Nenhum resultado encontrado. Tente novamente.';
+            }
+        });
+    </script>
 </body>
 </html>
